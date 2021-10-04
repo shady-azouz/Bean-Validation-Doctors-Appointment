@@ -11,7 +11,7 @@ public class Appointment {
     @Max(value = 150, message = "Age should not be greater than 150")
     private int age;
 
-    @Pattern(regexp="[\\d]*+[a-zA-Z]+ *+", message = "address should contain building number and street name")
+    @Pattern(regexp="[\\d]+[[\\s][\\w]+]+", message = "address should contain building number and street name")
     private String address;
 
     @Email(message = "Email should be valid")
@@ -23,7 +23,17 @@ public class Appointment {
 
     private LocalDate appointnemtDate;
 
-    public Optional<@Past LocalDate> getAppointmentDate() {
+    public Optional<@Future LocalDate> getAppointmentDate() {
         return Optional.of(appointnemtDate);
     }
+
+    public Appointment(String patientName, int age, String address, String email, String doctorName, LocalDate appointnemtDate) {
+        this.patientName = patientName;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.doctorName = doctorName;
+        this.appointnemtDate = appointnemtDate;
+    }
+
 }
