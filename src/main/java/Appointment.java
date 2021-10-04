@@ -1,8 +1,4 @@
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -14,6 +10,9 @@ public class Appointment {
     @Min(value = 0, message = "Age should not be less than 0")
     @Max(value = 150, message = "Age should not be greater than 150")
     private int age;
+
+    @Pattern(regexp="[\\d]*+[a-zA-Z]+ *+", message = "address should contain building number and street name")
+    private String address;
 
     @Email(message = "Email should be valid")
     private String email;
